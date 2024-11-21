@@ -91,7 +91,6 @@ if uploaded_file is not None:
                             startangle=90
                         )
                         ax.set_title(chart_title)
-                        st.pyplot(fig)
 
                 # Set titles and labels
                 ax.set_title(chart_title)
