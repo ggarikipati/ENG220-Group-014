@@ -84,7 +84,6 @@ if uploaded_file is not None:
                     ax.set_title(chart_title)
                     # No need for axis labels in pie charts
                     st.pyplot(fig)
-                    return
 
                 # Set titles and labels
                 ax.set_title(chart_title)
