@@ -66,7 +66,6 @@ if uploaded_file is not None:
                         ax.plot(year_data[x_column], year_data[y_column], label=f"Year {year}", marker='o')
                 elif graph_type == "Scatter":
                     ax.scatter(state_data[x_column], state_data[y_column], c=state_data['year'], cmap='viridis')
-                    ax.scatter(year_data[x_column], year_data[y_column], label=f"Year {year}")
                 elif graph_type == "Bar":
                     for year in sorted(state_data['year'].unique()):
                         year_data = state_data[state_data['year'] == year]
