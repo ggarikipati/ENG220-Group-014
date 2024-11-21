@@ -73,17 +73,25 @@ if uploaded_file is not None:
                         year_data = state_data[state_data['year'] == year]
                         ax.bar(year_data[x_column], year_data[y_column], label=f"Year {year}")
                 elif graph_type == "Pie":
-                    # For a pie chart, use the total percentage for each year
+                    # Convert y_column to numeric to avoid aggregation issues
+                    state_data[y_column] = pd.to_numeric(state_data[y_column], errors='coerce')
+
+                    # Group data by 'year' and calculate the mean of the y_column
                     pie_data = state_data.groupby('year')[y_column].mean()
-                    ax.pie(
+
+                        # Check if pie_data is valid
+                    if pie_data.isnull().all():
+                        st.error("No valid numeric data available for the selected state to plot a pie chart.")
+                    else:
+                    # Plot the pie chart
+                        ax.pie(
                         pie_data,
                         labels=pie_data.index,
                         autopct='%1.1f%%',
                         startangle=90
-                    )
-                    ax.set_title(chart_title)
-                    # No need for axis labels in pie charts
-                    st.pyplot(fig)
+                        )
+                        ax.set_title(chart_title)
+                        st.pyplot(fig)
 
                 # Set titles and labels
                 ax.set_title(chart_title)
