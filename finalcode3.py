@@ -53,7 +53,7 @@ if uploaded_file is not None:
             # Select graph type
             graph_type = st.selectbox(
                 "Select Graph Type",
-                ["Line", "Scatter", "Bar"]
+                ["Line", "Scatter", "Bar", "Pie"]
             )
 
             # Plot button
@@ -72,6 +72,19 @@ if uploaded_file is not None:
                     for year in sorted(state_data['year'].unique()):
                         year_data = state_data[state_data['year'] == year]
                         ax.bar(year_data[x_column], year_data[y_column], label=f"Year {year}")
+                elif graph_type == "Pie":
+                    # For a pie chart, use the total percentage for each year
+                    pie_data = state_data.groupby('year')[y_column].mean()
+                    ax.pie(
+                        pie_data,
+                        labels=pie_data.index,
+                        autopct='%1.1f%%',
+                        startangle=90
+                    )
+                    ax.set_title(chart_title)
+                    # No need for axis labels in pie charts
+                    st.pyplot(fig)
+                    return
 
                 # Set titles and labels
                 ax.set_title(chart_title)
