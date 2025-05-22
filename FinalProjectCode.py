@@ -14,12 +14,12 @@ import matplotlib.pyplot as plt
 # Title of the app
 st.title("Mental Health Data Visualization by State")
 
-# File uploader for CSV
-uploaded_file = st.file_uploader("Upload mental health data (CSV)", type=["csv"])
+# Load data directly from file
+data = pd.read_csv('./Water_Data_Clean1.csv') 
 
-if uploaded_file is not None:
-    # Read the CSV file
-    data = pd.read_csv(uploaded_file)
+if data is not None:
+    st.write("### Data Preview")
+    st.dataframe(data)
 
     # Clean column names to avoid issues
     data.columns = data.columns.str.strip()  # Remove leading/trailing spaces
