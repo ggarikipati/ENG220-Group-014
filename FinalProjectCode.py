@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 st.title("Mental Health Data Visualization by State")
 
 # Load data directly from file
-data = pd.read_csv('./Water_Data_Clean1.csv') 
+data = pd.read_csv('./CleanedMHData(Sheet1) (1).csv') 
 
 if data is not None:
     st.write("### Data Preview")
