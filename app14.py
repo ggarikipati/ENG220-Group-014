@@ -17,7 +17,6 @@ st.markdown("""
 This project visualizes mental health trends across the **United States**, with a particular focus on **New Mexico**.  
 It highlights the percentage of survey respondents reporting **frequent mental distress** across the years **2015, 2018, and 2024**, with more detailed data available for New Mexico.  
 Users can explore the trends using **Line Graphs**, **Scatter Plots**, **Bar Charts**, or **Pie Charts**, selecting individual states to observe changes over time.
----
 """)
 
 # Load and clean data
